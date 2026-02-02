@@ -6,8 +6,6 @@ public class TicTacToe
     //board [][] : char
     //firstPlayer : bool
     //gameOver : bool
-
-
     //play() 
     //printStatus(in player : int) 
     //gameStatus() : Status
@@ -15,10 +13,7 @@ public class TicTacToe
     //printBoard()
     //printSymbol(in column : int, in value : char)
     //validMove(in row: int, in column: int ) bool
-
-    final int BOARDSIZE = 3; //const
-
-    //put status here, i don't get enum yet
+    final int BOARDSIZE = 3; ///const
 
     public enum Status {    
         WIN,
@@ -26,17 +21,29 @@ public class TicTacToe
         CONTINUE
     }
 
-
     char[][] board = new char[BOARDSIZE][BOARDSIZE];
 
-    boolean firstPlayer = false; //what will the purpose of this var serve?
-    boolean gameOver = false;
+    boolean firstPlayer = false; //what w
 
-    public void play(String[] args)
+    boolean gameOver = false;
+ 
+  
+    public void play() // this member function will be running the game
+    //make sure the values are ready for the users of the game to use;
     {
+        System.out.println(".....");
+        int starter;
+        int end = 3;
+        for (starter = 0; starter < end; starter++)
+        {
+            this.printBoard();
+        }
+        ///this.printBoard();
+
 
     }
-    public static void printStatus(int inPlayer) //inPlayer : int *maybe a 2d array as a param.
+
+    public void printStatus(int inPlayer) //inPlayer : int 
     //i think inPlayer refers to which player is occupying which square 
     //in the possible places where a X or O could be placed
     {
@@ -44,17 +51,18 @@ public class TicTacToe
     }
     public void printBoard()
     {
+        System.out.println("Okay, now I need to make the lines to resemble the columns and rows");
 
     }
 
-    public void printSymbol() //(in column : int, in value : char)
+    public void printSymbol(int column, char value) //(in column : int, in value : char)
     {
 
     }
 
     //i believe boolean return data type
 
-    public boolean validMove() //(in row: int, in column: int ) bool
+    public boolean validMove(int row, int column) //(in row: int, in column: int ) bool
     {
         boolean res = false;
 
