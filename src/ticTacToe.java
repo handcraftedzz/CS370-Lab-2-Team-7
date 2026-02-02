@@ -1,5 +1,7 @@
 public class TicTacToe 
 {
+    import java.util.Scanner;
+
     //(name of the variable): data type = data
     //BOARDSIZE: int = 3
     //status {WIN, DRAW, CONTINUE} : enum
@@ -45,8 +47,8 @@ public class TicTacToe
             if (firstPlayer == false)
             {
                 this.printStatus(playerX);
-                //now u call valid move
-                ////boolean RES = this.validMove(1,3);
+            
+    
 
             }
             else
@@ -54,6 +56,16 @@ public class TicTacToe
                 this.printStatus(playerY);
                 //now u call valid move
             }
+
+            System.out.println("Player " + playerX + ": Enter row (0, 1, 2) : ");
+            //ask for input now, 
+            Scanner hisRow = new Scanner(System.in);
+            
+
+
+
+                //now u call valid move
+                             //////boolean ress = this.validMove(1,4);
           
         }
         ///this.printBoard();
@@ -103,6 +115,11 @@ public class TicTacToe
     public boolean validMove(int row, int column) //(in row: int, in column: int ) bool
     {
         boolean res = false;
+        System.out.println("w");
+      //  if (row < )
+       // {
+            
+       // }
 
         return res;
     }
