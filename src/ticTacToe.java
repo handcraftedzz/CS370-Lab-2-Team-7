@@ -33,10 +33,28 @@ public class TicTacToe
     {
         System.out.println(".....");
         int starter;
-        int end = 3;
-        for (starter = 0; starter < end; starter++)
+        int end = 1;
+        for (starter = 0; starter < end; starter++) //this will change to status later, 
+        ///i might use a while loop instead
         {
             this.printBoard();
+
+            int playerX = 1;
+            int playerY = 2; //maybe these can be const at the top of TTT class
+            //check to see who's turn it is, i might change this to be in the beginning of for loop
+            if (firstPlayer == false)
+            {
+                this.printStatus(playerX);
+                //now u call valid move
+                ////boolean RES = this.validMove(1,3);
+
+            }
+            else
+            {
+                this.printStatus(playerY);
+                //now u call valid move
+            }
+          
         }
         ///this.printBoard();
 
@@ -47,12 +65,32 @@ public class TicTacToe
     //i think inPlayer refers to which player is occupying which square 
     //in the possible places where a X or O could be placed
     {
+        if (inPlayer == 1) //def have in player's nums be global
+        {
+            System.out.println("Player " + "X's " + "turn.");
+        }
+        else if (inPlayer == 2)
+        {
+             System.out.println("Player " + "Y's " + " turn.");
+        }
+        
+    
 
     }
     public void printBoard()
     {
         System.out.println("Okay, now I need to make the lines to resemble the columns and rows");
+        // i will use this |
+        int i;
+        int e = 5;
 
+        System.out.println(" ________________________________________");
+
+        //System.out.println("------");
+        //for (i = 0; i < e; i++) //will see which horizontal line i use
+        //{
+
+   //     }
     }
 
     public void printSymbol(int column, char value) //(in column : int, in value : char)
