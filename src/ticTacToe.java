@@ -15,15 +15,23 @@ public class TicTacToe
     //printSymbol(in column : int, in value : char)
     //validMove(in row: int, in column: int ) bool
 
+    final int BOARDSIZE = 3; //const
 
-
-    int BOARDSIZE = 3;
     //put status here, i don't get enum yet
-    char[][] board = new char[3][3];
+
+    public enum Status {    
+        WIN,
+        DRAW,
+        CONTINUE
+    }
+
+
+    char[][] board = new char[BOARDSIZE][BOARDSIZE];
+
     boolean firstPlayer = false; //what will the purpose of this var serve?
     boolean gameOver = false;
 
-    public static void play(String[] args)
+    public void play(String[] args)
     {
 
     }
@@ -33,20 +41,22 @@ public class TicTacToe
     {
 
     }
-    public static void printBoard()
+    public void printBoard()
     {
 
     }
 
-    public static void printSymbol() //(in column : int, in value : char)
+    public void printSymbol() //(in column : int, in value : char)
     {
 
     }
 
     //i believe boolean return data type
 
-    public static void validMove() //(in row: int, in column: int ) bool
+    public boolean validMove() //(in row: int, in column: int ) bool
     {
+        boolean res = false;
 
+        return res;
     }
 }
