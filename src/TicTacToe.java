@@ -26,7 +26,7 @@ public class TicTacToe
 
     char[][] board = new char[BOARDSIZE][BOARDSIZE];
 
-    boolean firstPlayer = false; //what w
+    boolean firstPlayer = false; //what 
 
     boolean gameOver = false;
  
@@ -41,8 +41,8 @@ public class TicTacToe
         Scanner RowColumn = new Scanner(System.in); //change instance name to scanner
     
 
-        while (gStatus == Status.CONTINUE) //this will change to status later, 
-        //make a while loop and make sure status aint win, tie , nor loss
+        while (gStatus == Status.CONTINUE) 
+        //make a while loop and make sure status aint tie , nor loss
         ///i might use a while loop instead
         {
             boolean invalidInput = true;
@@ -59,7 +59,7 @@ public class TicTacToe
                 while (invalidInput == true) //maybe while u don't get invalid string and u don't get invalid int (will x < 0 ) throw an error
                 //this var should be called invalidString
                 {
-                    //NumberFormatException e;
+   
                     try {
                         System.out.print("Player X: Enter row ( 0, 1 or 2 ) : ");
                         String xRow = RowColumn.nextLine();
@@ -67,9 +67,7 @@ public class TicTacToe
                         String xColumn = RowColumn.nextLine();
                         int ROWWW = Integer.parseInt(xRow);
                         int COLUMNN = Integer.parseInt(xColumn);
-                        //System.out.println(ROWWW);
 
-                        //check to see it's not less than the first row nor greater than the last row. same process for column
 
                         if (ROWWW < 0 || ROWWW >= BOARDSIZE || COLUMNN < 0 || COLUMNN >= BOARDSIZE)
                         {
@@ -124,9 +122,8 @@ public class TicTacToe
                         String xColumn = RowColumn.nextLine();
                         int ROWWW = Integer.parseInt(xRow);
                         int COLUMNN = Integer.parseInt(xColumn);
-                        //System.out.println(ROWWW);
 
-                        //check to see it's not less than the first row nor greater than the last row. same process for column
+
 
                         if (ROWWW < 0 || ROWWW >= BOARDSIZE || COLUMNN < 0 || COLUMNN >= BOARDSIZE)
                         {
@@ -165,7 +162,7 @@ public class TicTacToe
                // printBoard();
 
 
-                //now u call valid move
+                    //valid function
             }
          
         if (gStatus == Status.WIN)
@@ -184,11 +181,6 @@ public class TicTacToe
             {   
                 System.out.println("DRAW!");
             }          
-            //ask for input now, 
-            ///Scanner hisRow = new Scanner(System.in);
-
-               // //now u call valid move
-                             //////boolean ress = this.validMove(1,4);
         }
 
         ///this.printBoard();
@@ -200,7 +192,7 @@ public class TicTacToe
     //i think inPlayer refers to which player is occupying which square 
     //in the possible places where a X or O could be placed
     {
-        if (inPlayer == 1) //def have in player's nums be global
+        if (inPlayer == 1) 
         {
             System.out.println("Player " + "X's " + "turn.");
         }
