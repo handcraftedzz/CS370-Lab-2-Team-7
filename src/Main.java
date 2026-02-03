@@ -4,10 +4,10 @@ public class Main
     {
         //make sure i block invalid input like a greek letter and accents
         //test for edge cases
-        System.out.println("This working?");
+        //System.out.println("This working?");
 
-       // TicTacToe game = new TicTacToe();
-       // game.play();
+       TicTacToe game = new TicTacToe();
+       game.play();
 
        ///make a game object
 

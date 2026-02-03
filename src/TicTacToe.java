@@ -1,6 +1,8 @@
+import java.util.Scanner;
+
 public class TicTacToe
 {
-    //  import java.util.Scanner;
+
     //(name of the variable): data type = data
     //BOARDSIZE: int = 3
     //status {WIN, DRAW, CONTINUE} : enum
@@ -46,15 +48,19 @@ public class TicTacToe
             if (firstPlayer == false)
             {
                 this.printStatus(playerX);
-        
+
+                System.out.print("Player X: Enter row (0, 1, 2) : ");
+                //Scanner xInputRow = new Scanner(System.in); //change instance name to scanner
+                //String xRow = xInputRow.nextLine();
+                //i have to close the scanner once done but let's see if i should
+                //only close it once the program ends, not in the game loop.
+
             }
             else
             {
                 this.printStatus(playerY);
                 //now u call valid move
             }
-
-            System.out.println("Player " + playerX + ": Enter row (0, 1, 2) : ");
             //ask for input now, 
             ///Scanner hisRow = new Scanner(System.in);
 
@@ -83,10 +89,27 @@ public class TicTacToe
     {
         ///System.out.println("Okay, now I need to make the lines to resemble the columns and rows");
         // i will use this |
-        int i;
-        int e = 5;
+        //int i;
+        //int e = 5;
 
-        System.out.println(" ________________________________________");
+        //System.out.println(" _______________________ ");
+        System.out.println(" ----------------------- ");
+        System.out.println("|       |       |       |");
+        System.out.println("|       |       |       |");
+        System.out.println("|       |       |       |");
+        System.out.println(" ----------------------- ");
+        //System.out.println(" _______________________ ");
+        System.out.println("|       |       |       |");
+        System.out.println("|       |       |       |");
+        System.out.println("|       |       |       |");
+        //System.out.println(" _______________________ ");
+        System.out.println(" ----------------------- ");
+        System.out.println("|       |       |       |");
+        System.out.println("|       |       |       |");
+        System.out.println("|       |       |       |");
+        System.out.println(" ----------------------- ");
+        //System.out.println(" _______________________ ");
+
 
         //System.out.println("------");
         //for (i = 0; i < e; i++) //will see which horizontal line i use
