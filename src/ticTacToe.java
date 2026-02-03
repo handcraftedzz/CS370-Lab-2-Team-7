@@ -1,7 +1,6 @@
-public class TicTacToe 
+public class TicTacToe
 {
-    import java.util.Scanner;
-
+    //  import java.util.Scanner;
     //(name of the variable): data type = data
     //BOARDSIZE: int = 3
     //status {WIN, DRAW, CONTINUE} : enum
@@ -47,9 +46,7 @@ public class TicTacToe
             if (firstPlayer == false)
             {
                 this.printStatus(playerX);
-            
-    
-
+        
             }
             else
             {
@@ -59,20 +56,15 @@ public class TicTacToe
 
             System.out.println("Player " + playerX + ": Enter row (0, 1, 2) : ");
             //ask for input now, 
-            Scanner hisRow = new Scanner(System.in);
-            
+            ///Scanner hisRow = new Scanner(System.in);
 
-
-
-                //now u call valid move
+               // //now u call valid move
                              //////boolean ress = this.validMove(1,4);
-          
         }
         ///this.printBoard();
 
 
     }
-
     public void printStatus(int inPlayer) //inPlayer : int 
     //i think inPlayer refers to which player is occupying which square 
     //in the possible places where a X or O could be placed
@@ -85,13 +77,11 @@ public class TicTacToe
         {
              System.out.println("Player " + "Y's " + " turn.");
         }
-        
-    
 
     }
     public void printBoard()
     {
-        System.out.println("Okay, now I need to make the lines to resemble the columns and rows");
+        ///System.out.println("Okay, now I need to make the lines to resemble the columns and rows");
         // i will use this |
         int i;
         int e = 5;
@@ -102,14 +92,12 @@ public class TicTacToe
         //for (i = 0; i < e; i++) //will see which horizontal line i use
         //{
 
-   //     }
+   //    // }
     }
-
     public void printSymbol(int column, char value) //(in column : int, in value : char)
     {
 
     }
-
     //i believe boolean return data type
 
     public boolean validMove(int row, int column) //(in row: int, in column: int ) bool
