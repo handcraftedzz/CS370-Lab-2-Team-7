@@ -34,12 +34,19 @@ public class TicTacToe
     public void play() // this member function will be running the game
     //make sure the values are ready for the users of the game to use;
     {
+        Status gStatus = Status.CONTINUE;
+
         System.out.println(".....");
-        int starter;
-        int end = 1;
-        for (starter = 0; starter < end; starter++) //this will change to status later, 
+   
+        Scanner RowColumn = new Scanner(System.in); //change instance name to scanner
+    
+
+        while (gStatus == Status.CONTINUE) //this will change to status later, 
+        //make a while loop and make sure status aint win, tie , nor loss
         ///i might use a while loop instead
         {
+            boolean invalidInput = true;
+
             this.printBoard();
 
             int playerX = 1;
@@ -49,28 +56,146 @@ public class TicTacToe
             {
                 this.printStatus(playerX);
 
-                System.out.print("Player X: Enter row (0, 1, 2) : ");
-                //Scanner xInputRow = new Scanner(System.in); //change instance name to scanner
-                //String xRow = xInputRow.nextLine();
+                while (invalidInput == true) //maybe while u don't get invalid string and u don't get invalid int (will x < 0 ) throw an error
+                //this var should be called invalidString
+                {
+                    //NumberFormatException e;
+                    try {
+                        System.out.print("Player X: Enter row ( 0, 1 or 2 ) : ");
+                        String xRow = RowColumn.nextLine();
+                        System.out.print("Player X: Enter column ( 0, 1 or 2 ) : ");
+                        String xColumn = RowColumn.nextLine();
+                        int ROWWW = Integer.parseInt(xRow);
+                        int COLUMNN = Integer.parseInt(xColumn);
+                        //System.out.println(ROWWW);
+
+                        //check to see it's not less than the first row nor greater than the last row. same process for column
+
+                        if (ROWWW < 0 || ROWWW >= BOARDSIZE || COLUMNN < 0 || COLUMNN >= BOARDSIZE)
+                        {
+                            System.out.println("An out of bounds index(s), need valid ints within the range. Try again.");
+                            continue;
+                        }   
+
+                        // i need to have something with valid move here called
+
+                        if (validMove(ROWWW,COLUMNN) == false)
+                        {
+                            System.out.println("Current spot is taken, try again.");
+                            continue;
+                        }
+
+                        board[ROWWW][COLUMNN] = 'X';
+                        firstPlayer = !firstPlayer;
+                        invalidInput = false;
+                        gStatus = gameStatus();
+
+                    } catch (NumberFormatException e) {
+                        if (e.getMessage().substring(0,16).equals("For input string"))
+                       {
+                            System.out.println("Please, try to give an integer.");
+                            continue;
+                       }
+                       else
+                       {
+                             System.out.println("Please enter a number within the bounds! Try again.");
+                       }
+                    }
+                }
+
+               // printBoard();
                 //i have to close the scanner once done but let's see if i should
                 //only close it once the program ends, not in the game loop.
-
             }
             else
             {
-                this.printStatus(playerY);
+               // this.printStatus(playerY);
+
+               this.printStatus(playerY);
+
+                while (invalidInput == true) //maybe while u don't get invalid string and u don't get invalid int (will x < 0 ) throw an error
+                //this var should be called invalidString
+                {
+                    //NumberFormatException e;
+                    try {
+                        System.out.print("Player O: Enter row ( 0, 1 or 2 ) : ");
+                        String xRow = RowColumn.nextLine();
+                        System.out.print("Player O: Enter column ( 0, 1 or 2 ) : ");
+                        String xColumn = RowColumn.nextLine();
+                        int ROWWW = Integer.parseInt(xRow);
+                        int COLUMNN = Integer.parseInt(xColumn);
+                        //System.out.println(ROWWW);
+
+                        //check to see it's not less than the first row nor greater than the last row. same process for column
+
+                        if (ROWWW < 0 || ROWWW >= BOARDSIZE || COLUMNN < 0 || COLUMNN >= BOARDSIZE)
+                        {
+                            System.out.println("An out of bounds index(s), need valid ints within the range. Try again.");
+                            continue;
+                        }   
+
+                        // i need to have something with valid move here called
+
+                        if (validMove(ROWWW,COLUMNN) == false)
+                        {
+                            System.out.println("Current spot is taken, try again.");
+                            continue;
+                        }
+
+                 
+                        board[ROWWW][COLUMNN]= 'O';
+                        firstPlayer = !firstPlayer;
+                        invalidInput = false;
+                        gStatus = gameStatus();
+                    
+
+                    } catch (NumberFormatException e) {
+                        if (e.getMessage().substring(0,16).equals("For input string"))
+                       {
+                            System.out.println("Please, try to give an integer.");
+                            continue;
+                       }
+                       else
+                       {
+                             System.out.println("Please enter a number within the bounds! Try again.");
+                       }
+                    }
+                }
+
+               // printBoard();
+
+
                 //now u call valid move
             }
+         
+        if (gStatus == Status.WIN)
+            {
+            if (firstPlayer == true)
+                {
+                    System.out.println("Player X is the winner!");
+                }
+                else
+                {
+                    System.out.println("Player O is the winner!");
+                }
+             }
+
+            else if (gStatus == Status.DRAW)
+            {   
+                System.out.println("DRAW!");
+            }          
             //ask for input now, 
             ///Scanner hisRow = new Scanner(System.in);
 
                // //now u call valid move
                              //////boolean ress = this.validMove(1,4);
         }
+
         ///this.printBoard();
-
-
+        printBoard();
+        RowColumn.close();
     }
+
     public void printStatus(int inPlayer) //inPlayer : int 
     //i think inPlayer refers to which player is occupying which square 
     //in the possible places where a X or O could be placed
@@ -81,57 +206,102 @@ public class TicTacToe
         }
         else if (inPlayer == 2)
         {
-             System.out.println("Player " + "Y's " + " turn.");
+             System.out.println("Player " + "O's " + " turn.");
         }
 
     }
+
+
+    public Status gameStatus()
+    {
+    // check rows
+    for (int r = 0; r < BOARDSIZE; r++) 
+    {
+        if (board[r][0] != '\0' && board[r][0] == board[r][1] && board[r][1] == board[r][2]) 
+            {
+                return Status.WIN;
+            }
+    }
+
+    // check columns
+    for (int c = 0; c < BOARDSIZE; c++)
+    {
+        if (board[0][c] != '\0' && board[0][c] == board[1][c] && board[1][c] == board[2][c]) 
+            {
+                return Status.WIN;
+            }
+    }
+
+    // diagonally won, 
+    if (board[0][0] != '\0' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) 
+        {
+            return Status.WIN;
+        }
+
+    if (board[0][2] != '\0' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) 
+        {
+            return Status.WIN;
+        }
+
+    // draw , all spots taken up
+    for (int r = 0; r < BOARDSIZE; r++) 
+        {
+        for (int c = 0; c < BOARDSIZE; c++)
+             {
+                if (board[r][c] == '\0') 
+                {
+                    return Status.CONTINUE;
+                }
+            }
+        }
+        return Status.DRAW;
+    }
+
+        
     public void printBoard()
     {
-        ///System.out.println("Okay, now I need to make the lines to resemble the columns and rows");
-        // i will use this |
-        //int i;
-        //int e = 5;
-
-        //System.out.println(" _______________________ ");
-        System.out.println(" ----------------------- ");
-        System.out.println("|       |       |       |");
-        System.out.println("|       |       |       |");
-        System.out.println("|       |       |       |");
-        System.out.println(" ----------------------- ");
-        //System.out.println(" _______________________ ");
-        System.out.println("|       |       |       |");
-        System.out.println("|       |       |       |");
-        System.out.println("|       |       |       |");
-        //System.out.println(" _______________________ ");
-        System.out.println(" ----------------------- ");
-        System.out.println("|       |       |       |");
-        System.out.println("|       |       |       |");
-        System.out.println("|       |       |       |");
-        System.out.println(" ----------------------- ");
-        //System.out.println(" _______________________ ");
-
-
-        //System.out.println("------");
-        //for (i = 0; i < e; i++) //will see which horizontal line i use
-        //{
-
-   //    // }
+        for (int r = 0; r < BOARDSIZE; r++)
+            {
+                System.out.println(" ___________ ");
+                for (int c = 0; c < BOARDSIZE; c++)
+                    {
+                        char symbol = board[r][c];
+                        printSymbol(c,symbol);
+                        if (c == BOARDSIZE-1)
+                            {
+                            System.out.print("|");
+                            }
+                    }
+            System.out.println();
+            }
+         System.out.println(" ___________ ");
     }
-    public void printSymbol(int column, char value) //(in column : int, in value : char)
-    {
 
+    public void printSymbol(int column, char s) //(in column : int, in value : char)
+    {
+      System.out.print("|");
+
+
+      if (s == '\0')
+      {
+        System.out.print("   ");
+      }
+
+      else
+      {
+        System.out.print(" " + s + " ");
+      }
     }
     //i believe boolean return data type
 
     public boolean validMove(int row, int column) //(in row: int, in column: int ) bool
     {
-        boolean res = false;
-        System.out.println("w");
-      //  if (row < )
-       // {
-            
-       // }
+        boolean res = true;
 
+        if (board[row][column] == 'X' || board[row][column] == 'O')
+        {
+            res = false;
+        }
         return res;
     }
 }
